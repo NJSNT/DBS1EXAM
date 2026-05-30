@@ -1,0 +1,17 @@
+Jiashuo Wang(364341) DBSAssignment2
+
+### Jiashuo Wang(364341)- DBSAssignment2
+
+A- ToyStore(store_id{PK} name address(Composite)) Department(dept_id{PK} name) Employee(employee{PK} name hiringDate 5YearDate(Derived)) Cashier(ableToHandelCash) Manager(speBonus) Buyer(specializations(Multi-valued)) Product(skuNumber{PK} battery) Stock(quantity receivalDate receivalTime) Receipt(receipt_no{PK} header) ReceiptLine(line_number{PPK} quantity price) Promotion(code{PK} discount)
+
+B- Has been included in A : )
+
+C- Recursive Relationship:Product to Product In the interview, the owner states: "Some products are actually bundles that contain other products". This indicates a structural relationship where one Product (the bundle) is made up of multiple other Product instances (the individual items). Since both the "bundle" and the "items inside the bundle" belong to the same entity type (Product), this association must be modeled as a recursive relationship (a line drawn from the Product entity back to itself). The multiplicity would be 0..* on the bundle side (a product might be part of zero or many bundles) and 1..* on the contained items side (a bundle contains one or more products)
+
+Jiashuo Wang(364341) DBSAssignment2
+
+D- I identified an inheritance (generalization/specialization) relationship from the interview. The owner mentioned four types of entities regarding personnel. Since Employee serves as the general term that contains shared characteristics (such as name and hiring date), I modeled it as the superclass. Meanwhile, Cashier, Manager, and Buyer possess their own specific attributes (such as cash certification and manager bonus), so I modeled them as subclasses. Regarding the constraints, I chose Total (Complete) and Disjoint. Total Completeness Constraint: I chose Total because the owner explicitly stated, "All employees are either cashiers, managers, or buyers". This indicates that there are no generic employees who do not belong to one of these three specific subclasses. Disjointness Constraint: I chose Disjoint based on common business domain knowledge. The responsibilities and compensation structures (e.g., specific bonuses) of these three roles are vastly different, meaning that a person typically assumes only one role at a time. E- I identified three relationships that should be modeled as compositions (strong whole- part relationships) because of strict existence dependency. ⚫ Receipt (Whole) and Receipt Line (Part): Why: This is a classic composition relationship. A Receipt Line is a weak entity that cannot exist independently of its parent Receipt. If a specific receipt is deleted or voided, all of its individual receipt lines lose their meaning and must be destroyed with it. ⚫ Toy Store (Whole) and Department (Part): Why: The departments (e.g., "Games" or "LEGO") mentioned in the interview are physical or administrative sections within a specific store. If a Toy Store is closed and removed from the system, its specific departments no longer exist independently. Therefore, the departments are strongly composed within the store. ⚫ Toy Store (Whole) and Stock (Part): Why: The owner states, "Per toy store we register which products make up the stock". This indicates that the Stock records (quantity, receival date, etc.) are strictly bound to a specific location. If the store ceases to exist, its associated stock records hold no value and should not exist independently.
+
+Jiashuo Wang(364341) DBSAssignment2
+
+F-
